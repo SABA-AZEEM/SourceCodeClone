@@ -1,33 +1,19 @@
 import Image from "next/image";
 import styles from "./page.module.css";
-import myImage from '../../public/main-hero-image.jpg';
+import myImage from '../../public/rootPageImages/main-hero-image.jpg';
 import Link from "next/link";
+
+import { skillsArray } from "../../public/data/skillsData";
+import { stemCourses } from "../../public/data/stemCoursesData";
+import { featuredCourses } from "../../public/data/featuredCoursesData";
+
+import CourseCard from "@/components/courseCard/CourseCard";
 import Skills from "@/components/skills/Skills";
 
-import eloquence from '../../public/skillsImages/eloquence.png';
-import expertise from '../../public/skillsImages/expertise.png';
-import thought from '../../public/skillsImages/thought.png';
 
 export default function Home() {
 
-  const skillsArray = [
-    {
-      imgPath:thought,
-      title:'The Thought',
-      detailLink:'/get-category/the-thought',
-    },
-    {
-      imgPath:eloquence,
-      title:'The Eloquence',
-      detailLink:'/get-category/the-eloquence',
-    },
-    {
-      imgPath:expertise,
-      title:'The Expertise',
-      detailLink:'/get-category/the-expertise',
-    },
-    
-  ]
+  
 
   return (
   <div>
@@ -75,7 +61,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className={`${styles.subContent2} ${styles.centerContent}`}>
+      <section className={styles.centerContent}>
         <div className={styles.skillsDescription}>
           <h2 style={{fontSize:'2.6rem',marginBottom:'25px'}}>Nurture the <span style={{color:'yellowgreen'}}>Next Generation</span> of Excellence</h2>
 
@@ -85,7 +71,7 @@ export default function Home() {
         </div>
         <div className={styles.skillCard}>
           {skillsArray.map((skill)=>(
-            <Skills imgPath={skill.imgPath} title={skill.title} detailLink={skill.detailLink} />
+            <Skills key={skill.id} imgPath={skill.imgPath} title={skill.title} detailLink={skill.detailLink} />
           ))}
         </div>
         <p style={{fontSize:'1.2rem',fontWeight:'400',marginBottom:'25px'}}>
@@ -93,11 +79,49 @@ export default function Home() {
         </p>
       </section>
 
-      <section className={`${styles.subContent1} ${styles.centerContent}`}>
-        <div>
-          <h2>Featured Courses</h2>
+      <section className={styles.centerContent}>
+        <div className={styles.heading}>
+          <h2 style={{fontSize:'2.5rem'}}>Featured Courses</h2>
           <Link href='/courses' className={styles.btn}>View All Courses</Link>
         </div>
+        <div className={styles.course}>
+          {featuredCourses.map((course)=>(
+            <CourseCard
+              key={course.id}
+              imgURL={course.imgURL}
+              duration={course.duration}
+              title={course.title}
+              linkTitle={course.linkTitle}
+              linkTitleUrl={course.linkTitleUrl}
+              rupee={course.rupee}
+              detailUrl={course.detailUrl}
+            />
+          ))}
+        </div>
+      </section>
+
+      <section className={styles.centerContent}>
+        <h2 style={{textAlign:'center',fontSize:'2rem'}}>STEM Courses</h2>
+        <div className={styles.line}></div>
+        <p className={styles.stemInfo}>All of these STEM courses, accredited and aligned with modern standards of education, will be starting this summer, allowing students to excel in commercial certifications within just 3 to 4 years.</p>
+        <div className={styles.course}>
+          {stemCourses.map((course)=>(
+            <CourseCard
+              key={course.id}
+              imgURL={course.imgURL}
+              duration={course.duration}
+              title={course.title}
+              linkTitle={course.linkTitle}
+              linkTitleUrl={course.linkTitleUrl}
+              rupee={course.rupee}
+              detailUrl={course.detailUrl}
+            />
+          ))}
+        </div>
+      </section>
+
+      <section className={`${styles.subContent5} ${styles.centerContent}`}>
+
       </section>
 
     </div>

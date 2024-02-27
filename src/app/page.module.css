@@ -48,7 +48,7 @@ h2 .styleGray{
   right: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to right, black 40%, rgb(87, 100, 112)), url('../../public/main-hero-image.jpg');
+  background: linear-gradient(to right, black 40%, rgb(87, 100, 112));
   background-size: cover; 
   z-index: 0; /* Ensure background stays behind text content */
 }
@@ -67,7 +67,7 @@ h2 .styleGray{
 .centerContent{
   width: 60%;
   margin: 0 auto;
-  padding: 10rem 0;
+  padding: 5rem 0;
 }
 
           /* style for sub content 1  */
@@ -96,3 +96,30 @@ h2 .styleGray{
   justify-content: space-between;
   
 }
+
+      /* style for sub-content 3 */
+.heading{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.6rem;
+}
+.course{
+  display: flex;
+  justify-content: space-around;
+}
+
+      /* style for sub-content 4 */
+.line {
+  width: 40px; 
+  height: 5px; 
+  background-color: greenyellow; 
+  margin: 2rem auto;
+}
+.stemInfo{
+  width: 80%;
+  margin: 2rem auto;
+  font-size: 1.2rem;
+  text-align: center;
+}
+   
+      /* style for sub content 5 */
