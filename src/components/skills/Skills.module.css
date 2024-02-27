@@ -1,0 +1,17 @@
+.skillsContainer{
+    border: 1px solid gray;
+    padding: 20px;
+    border-radius: 5px;
+    width: 22rem;
+    position: relative;
+    margin-bottom: 25px;
+}
+.skillImg{
+    position: relative;
+    left: 14rem;
+}
+.skillsContainer:hover{
+    border: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+}

@@ -1,95 +1,107 @@
 import Image from "next/image";
 import styles from "./page.module.css";
+import myImage from '../../public/main-hero-image.jpg';
+import Link from "next/link";
+import Skills from "@/components/skills/Skills";
+
+import eloquence from '../../public/skillsImages/eloquence.png';
+import expertise from '../../public/skillsImages/expertise.png';
+import thought from '../../public/skillsImages/thought.png';
 
 export default function Home() {
-  return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
 
-      <div className={styles.center}>
+  const skillsArray = [
+    {
+      imgPath:thought,
+      title:'The Thought',
+      detailLink:'/get-category/the-thought',
+    },
+    {
+      imgPath:eloquence,
+      title:'The Eloquence',
+      detailLink:'/get-category/the-eloquence',
+    },
+    {
+      imgPath:expertise,
+      title:'The Expertise',
+      detailLink:'/get-category/the-expertise',
+    },
+    
+  ]
+
+  return (
+  <div>
+    {/* // top part of the main page  */}
+    <div class={styles.container}>
+      <div class={styles.content}>
+        <h2>
+          Source Code <span className={styles.styleGreen}>Academia </span>
+          is a <span className={styles.styleGray}>global mission to build a </span>
+          Muslim thought & identity…
+        </h2>
+        <h3>
+          Anchoring the purpose of setting the
+          students on the path of a
+        </h3>
+        <h1>GLOBAL CHANGE.</h1>
+      </div>
+      <div class={styles.background}>
         <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
+          src={myImage}
+          width={800}
+          alt="Picture of the author"
+          className={styles.heroImage}
         />
       </div>
+    </div>
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
+    {/* // content part of the main page  */}
+    <div className={styles.mainContent}>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
+      <section className={`${styles.subContent1} ${styles.centerContent}`}>
+        <div className={styles.title}>
+          <span style={{fontWeight:900,fontSize:'3rem'}}>THE</span>
+          <span style={{fontWeight:900,fontSize:'9rem'}}>100</span>
+          <span style={{fontWeight:800, fontSize:'2rem', backgroundColor:'greenyellow',width:'90%',padding:'0 10px'}}>YEAR PLAN</span>
+        </div>
+        <div className={styles.description}>
+          <h3>
+          <span style={{color:'grey'}}>Our aim to build the network of all our students</span> and connect them into an ecosystem of building knowledge skills and<span style={{color:'grey'}}> attributes required to solve the global problems for the</span> next century!
+          </h3>
+          <p style={{fontSize:'1.1rem',marginBottom:'30px'}}>
+          Source Code introduces the platform for networking and building a sense of community for all its students and behaves as a community center with a deeper purpose of preparing its students to clarify the identity and purpose for any and every one of its students.
           </p>
-        </a>
-      </div>
-    </main>
+          <Link href='/about-us' className={styles.btn}>Learn More</Link>
+        </div>
+      </section>
+
+      <section className={`${styles.subContent2} ${styles.centerContent}`}>
+        <div className={styles.skillsDescription}>
+          <h2 style={{fontSize:'2.6rem',marginBottom:'25px'}}>Nurture the <span style={{color:'yellowgreen'}}>Next Generation</span> of Excellence</h2>
+
+          <h3 style={{fontSize:'1.7rem',fontWeight:'500',marginBottom:'25px'}}>Identifying and developing the right skills in the current generation is crucial for meeting the needs of the next generation and achieving excellence over the long-term.</h3>
+
+          <p style={{fontSize:'1.2rem',fontWeight:'400',marginBottom:'25px'}}>In order to meet the needs of the next generation and achieve excellence over the next hundred years, it is essential that we identify and cultivate the right skills in the current youth and adults. We have divided these skills into three categories:</p>
+        </div>
+        <div className={styles.skillCard}>
+          {skillsArray.map((skill)=>(
+            <Skills imgPath={skill.imgPath} title={skill.title} detailLink={skill.detailLink} />
+          ))}
+        </div>
+        <p style={{fontSize:'1.2rem',fontWeight:'400',marginBottom:'25px'}}>
+        Some skills may take multiple generations to fully develop, so it is important that we act quickly to identify the skills that are most necessary and begin working to enhance them. Without this focus on skill development, we may not be able to reach the milestones that are necessary for the future.
+        </p>
+      </section>
+
+      <section className={`${styles.subContent1} ${styles.centerContent}`}>
+        <div>
+          <h2>Featured Courses</h2>
+          <Link href='/courses' className={styles.btn}>View All Courses</Link>
+        </div>
+      </section>
+
+    </div>
+
+  </div>
   );
 }

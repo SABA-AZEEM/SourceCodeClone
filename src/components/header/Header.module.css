@@ -1,0 +1,72 @@
+.container{
+    background-color: rgb(22, 22, 22);
+}
+.header{
+    width: 70%;
+    margin: 0 auto;   
+    padding: 5px 9px;
+}
+
+                /* css for top part of the headr  */
+.headerTop{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid white;
+    padding: 10px 0;
+}
+.inlineComponents{
+    display: flex;
+    
+}
+.icon{
+    margin: 2px 15px;
+}
+.auth{
+    border-left: 1px solid white;
+}
+
+                /* css for bottom part of the header  */
+.headerBottom{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+.navLink{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+}
+.logo{
+    width: 200px;
+}
+.categoryButtonContainer{
+    padding: 10px;
+    background-color: rgba(255,255,255,0.4);
+}
+.categoryButtonSubContainer{
+    display: none;
+}
+.categoryButton{
+    background-color: transparent;
+    outline: none;
+    border: none;
+}
+.coachingButton{
+    background-color: rgb(22, 22, 22);
+    outline: none;
+    border: none;
+    margin-right: 6px;
+}
+.coachingContainer{
+    display: none;
+}
+.coachingButton:hover .coachingContainer{
+    display: block;
+    flex-direction: column;
+}
+.teach_contact{
+    margin: auto 0;
+    border: 1px solid greenyellow;
+    padding: 7px;
+}
