@@ -40,18 +40,40 @@
 .logo{
     width: 200px;
 }
+
+
 .categoryButtonContainer{
     padding: 10px;
     background-color: rgba(255,255,255,0.4);
 }
+
 .categoryButtonSubContainer{
     display: none;
 }
+.thoughtSubContainer{
+    display: none;
+}
+.eloquenceSubContainer{
+    display: none;
+}
+.expertiseSubContainer{
+    display: none;
+}
+
+.categoryButtonContainer:hover + .categoryButtonSubContainer {
+    display: block;
+}
+.thoughtContainer:hover + .thoughtSubContainer{
+    display: block;
+}
+
 .categoryButton{
     background-color: transparent;
     outline: none;
     border: none;
 }
+
+
 .coachingButton{
     background-color: rgb(22, 22, 22);
     outline: none;
@@ -61,7 +83,7 @@
 .coachingContainer{
     display: none;
 }
-.coachingButton:hover .coachingContainer{
+.coachingButton:hover + .coachingContainer{
     display: block;
     flex-direction: column;
 }

@@ -72,6 +72,7 @@ const Header = () => {
                     <img src="https://sourcecode.academy/images/Sourcecode-Academia-BE-w.png" alt="logo" className={styles.logo}/>   
                 </Link>
 
+                    {/* Category Button  */}
                 <div>
                     <div className={styles.categoryButtonContainer}>
                         <button className={styles.categoryButton}>Categories</button>
@@ -79,11 +80,11 @@ const Header = () => {
                     </div>
                     <div className={styles.categoryButtonSubContainer}>
                         <div>
-                            <div>
+                            <div className={styles.thoughtContainer}>
                                 <button>The Thought</button>
                                 <FontAwesomeIcon icon={faAngleRight} />
                             </div>
-                            <div>
+                            <div className={styles.thoughtSubContainer}>
                                 <Link href='#'>Critical Analysis</Link>
                                 <Link href='#'>Research & Analysis</Link>
                                 <Link href='#'>World View</Link>
@@ -91,21 +92,21 @@ const Header = () => {
                             </div>
                         </div>
                         <div>
-                            <div>
+                            <div className={styles.eloquenceContainer}>
                                 <button>The Eloquence</button>
                                 <FontAwesomeIcon icon={faAngleRight} />
                             </div>
-                            <div>
+                            <div className={styles.eloquenceSubContainer}>
                                 <Link href='#'>Arabic Language</Link>
                                 <Link href='#'>Emotional Intelligence</Link>
                             </div>
                         </div>
                         <div>
-                            <div>
+                            <div className={styles.expertiseContainer}>
                                 <button>The Experties</button>
                                 <FontAwesomeIcon icon={faAngleRight} />
                             </div>
-                            <div>
+                            <div className={styles.expertiseSubContainer}>
                                 <Link href='#'>Mathematics</Link>
                                 <Link href='#'>Physics</Link>
                                 <Link href='#'>Biology</Link>
@@ -115,9 +116,10 @@ const Header = () => {
                     </div>
                 </div>
 
+                    {/* Coaching Button */}
                 <div >
-                    <div >
-                        <button className={styles.coachingButton}>Coaching</button>
+                    <div className={styles.coachingButton}>
+                        <button>Coaching</button>
                         <FontAwesomeIcon icon={faAngleDown} />
                     </div>
                     <div className={styles.coachingContainer}>
@@ -127,10 +129,10 @@ const Header = () => {
                     </div>
                 </div>
 
-                <Link href='about-us'>About Us</Link>
-                <Link href='courses'>Courses</Link>
-                <Link href='instructor-list'>Our Faculty</Link>
-                <Link href='Blogs'>Blogs</Link>
+                <Link href='/about-us'>About Us</Link>
+                <Link href='/courses'>Courses</Link>
+                <Link href='/instructor-list'>Our Faculty</Link>
+                <Link href='/blogs'>Blogs</Link>
 
             </section>
 

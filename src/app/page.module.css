@@ -67,7 +67,7 @@ h2 .styleGray{
 .centerContent{
   width: 60%;
   margin: 0 auto;
-  padding: 5rem 0;
+  padding: 8rem 0;
 }
 
           /* style for sub content 1  */
@@ -123,3 +123,52 @@ h2 .styleGray{
 }
    
       /* style for sub content 5 */
+.subContent5{
+  display: flex;
+  width: 100%;
+  padding-bottom: 0;
+}
+
+.coachingContent{
+  margin: auto;
+  width: 40%;
+}
+.line2{
+  height: 3px;
+  width: 40px;
+  margin-bottom: 15px;
+  background-color: black;
+}
+.coachingCardContainer{
+  display: flex;
+  justify-content: space-between;
+}
+
+      /* Style for sub-content 6 */
+.subContent6{
+  background-color: yellowgreen;
+}
+.teachContainer{
+  display: flex;
+  width: 60%;
+  margin: 0 auto;
+}
+/* .teachImage{
+  position: relative;
+  bottom: 3rem;
+} */
+.teachContentContainer{
+  background-color: rgba(255,255,255,0.3);
+  padding: 25px;
+}
+.teachContent{
+  margin-top: 5rem;
+}
+.joinText{
+  margin: auto 1rem;
+}
+.joinText h3{
+  font-size: 1.9rem;
+  font-weight: 800;
+  writing-mode: vertical-rl; 
+}

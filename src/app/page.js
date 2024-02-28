@@ -1,14 +1,19 @@
 import Image from "next/image";
 import styles from "./page.module.css";
-import myImage from '../../public/rootPageImages/main-hero-image.jpg';
 import Link from "next/link";
+
+import myImage from '../../public/rootPageImages/main-hero-image.jpg';
+import coachingImg from '../../public/rootPageImages/coachingImage.webp';
+import teach from '../../public/rootPageImages/teachWithUs.webp';
 
 import { skillsArray } from "../../public/data/skillsData";
 import { stemCourses } from "../../public/data/stemCoursesData";
 import { featuredCourses } from "../../public/data/featuredCoursesData";
+import { coachingData } from "../../public/data/coachingData";
 
 import CourseCard from "@/components/courseCard/CourseCard";
 import Skills from "@/components/skills/Skills";
+import CoachingCard from "@/components/coachingCard/CoachingCard";
 
 
 export default function Home() {
@@ -121,7 +126,50 @@ export default function Home() {
       </section>
 
       <section className={`${styles.subContent5} ${styles.centerContent}`}>
+            <div>
+              <Image src=     {coachingImg} alt="coaching image"
+              className={styles.img} 
+              />
+            </div>
+            <div className={styles.coachingContent}>
+              <h3 style={{fontWeight:'900',fontSize:'1.7rem',marginBottom:'10px'}}>Elevate Your Potential with</h3>
+              <h2 style={{fontWeight:'900',fontSize:'2.7rem',marginBottom:'10px',
+              color:'yellowgreen'}}>Expert Coaching</h2>
+              <div className={styles.line2}></div>
+              <p style={{color:'gray',fontSize:'1.2rem',marginBottom:'25px'}}>Take your personal and professional development to the next level with expert coaching from our team of domain experts. Our one-on-one coaching sessions are tailored to your specific needs and goals, providing you with the support and guidance you need to succeed.</p>
+              <div className={styles.coachingCardContainer}>
+                {
+                  coachingData.map((data)=>(
+                    <CoachingCard 
+                      key={data.id}
+                      title={data.title}
+                      description={data.description}
+                      bookingURL={data.bookingURL}
+                    />
+                  ))
+                }
+              </div>
+            </div>
+      </section>
 
+      <section className={styles.subContent6}>
+        <div className={styles.teachContainer}>
+          <div>
+            <Image src={teach} alt="teach with us" className={styles.teachImage}/>
+          </div>
+          <div className={styles.teachContentContainer}>
+            <div className={styles.teachContent}>
+            <h2 style={{fontSize:'2.5rem',fontWeight:'800',marginBottom:'10px'}}>Teach with Us</h2>
+            <div className={styles.line2}></div>
+            <p style={{fontSize:'1.3rem'}}>
+              Join the ranks of our esteemed instructors at Source Code Academia and become a driving force in the global effort to enhance Muslim competency. As a member of our community, you will have the opportunity to make a real difference in the lives of students around the world and be a part of a movement that is working towards positive change. Together, we can create a brighter future for all.
+            </p>
+          </div>
+          </div>
+          <div className={styles.joinText}>
+            <h3>Join Us!</h3>
+          </div>
+        </div>
       </section>
 
     </div>
