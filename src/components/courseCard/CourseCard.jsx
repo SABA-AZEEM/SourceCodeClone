@@ -16,7 +16,7 @@ const CourseCard = (props) => {
       />
       <div className={styles.subPart}>
         <div style={{display:'flex',justifyContent:'space-between',marginBottom:'7px'}}>
-            <span>Beginner</span>
+            <span>{props.level ? props.level : 'Beginner' }</span>
             <span>{props.duration}</span>
         </div>
         <h4 style={{height:'3rem'}}>{props.title}</h4>
