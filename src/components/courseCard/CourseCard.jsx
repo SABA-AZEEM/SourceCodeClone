@@ -22,7 +22,7 @@ const CourseCard = (props) => {
         <h4 style={{height:'3rem'}}>{props.title}</h4>
         <Link href={props.linkTitleUrl} style={{textDecoration:'underline',marginBottom:'12px'}}>{props.linkTitle}</Link>
         <span>Starting From:</span>
-        <h4 style={{fontSize:'1.2rem',color:'greenyellow',marginBottom:'19px'}}>PKR. {props.rupee}/Month</h4>
+        <h4 style={{fontSize:'1.2rem',color:'yellowgreen',marginBottom:'19px'}}>PKR. {props.rupee}/Month</h4>
         <div  style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
             <Link href={props.detailUrl} className={styles.btn}>View Detail</Link>
             <FontAwesomeIcon

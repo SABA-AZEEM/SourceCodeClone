@@ -1,6 +1,6 @@
-import logo1 from '../coaching-images/personal-counseling-coaching/requirements/pic1.svg';
-import logo2 from '../coaching-images/personal-counseling-coaching/requirements/pic2.svg';
-import logo3 from '../coaching-images/personal-counseling-coaching/requirements/pic3.svg';
+import logo1 from '../coaching-images/requirements/pic1.svg';
+import logo2 from '../coaching-images/requirements/pic2.svg';
+import logo3 from '../coaching-images/requirements/pic3.svg';
 
 
 export const requirements=[
