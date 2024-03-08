@@ -42,21 +42,25 @@ export const registerUser = async(req,res)=>{
 // route POST /api/users/login
 // @access Public
 export const loginUser = async(req,res)=>{
-    const {emailAddress,password} = req.body;
+    try{
+        const {emailAddress,password} = req.body;
 
-    const userExist = await User.findOne({emailAddress});
-    if(userExist && userExist.password===password){
-        res.status(201).json({
-            _id:userExist._id,
-            firstName:userExist.firstName,
-            lastName:userExist.lastName,
-            emailAddress:userExist.emailAddress,
-        });
-    }else{
-        res.status(401);
-        throw new Error('Invalid email or password!');
+        const userExist = await User.findOne({emailAddress});
+        if(userExist && userExist.password===password){
+            res.status(201).json({
+                _id:userExist._id,
+                firstName:userExist.firstName,
+                lastName:userExist.lastName,
+                emailAddress:userExist.emailAddress,
+            });
+        }else{
+            res.status(401).json({error:'Invalid email or password!'});
+        }
+    }catch(error){
+        console.error('Error occurred during login:',error);
+        res.status(500).json({error:'An unexpected error occurred'});
     }
-}
+};
 
 // @desc user login
 // route POST /api/users/login

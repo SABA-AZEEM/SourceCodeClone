@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import dotenv from 'dotenv';
 dotenv.config();
 import connectDB from "./config/connectDB.js";
@@ -7,10 +8,15 @@ import userRoutes from './routes/userRoutes.js';
 
 const port = process.env.PORT || 5000;
 
+
+
 //Connect to mongodb
 connectDB();
 
 const app = express();
+
+//Enable all CORS requests
+app.use(cors());
 
 
 //Middleware

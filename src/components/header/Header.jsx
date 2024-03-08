@@ -59,7 +59,7 @@ const Header = () => {
             </section>
             <section className={styles.auth}>
                 <FontAwesomeIcon icon={faUser} className={styles.icon}/>
-                <Link href='login'>Login/Register</Link>
+                <Link href='/login'>Login/Register</Link>
             </section>
 
         </section>
