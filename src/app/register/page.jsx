@@ -3,6 +3,9 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
+import { useDispatch } from 'react-redux';
+import { signInSuccess } from '../GlobalRedux/features/User/userSlice';
+
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -45,6 +48,8 @@ const Register = () => {
   const [password,setPassword] = useState('');
   const [confirmPassword,setConfirmPassword] = useState('');
 
+  const dispatch = useDispatch();
+
   const signUpHandler = async(event)=>{
     event.preventDefault();
     
@@ -59,13 +64,16 @@ const Register = () => {
       });
       if(response.ok){
         const userData = await response.json();
-        console.log('SignUp Successfull!');
+        toast.success('SignUp Successfull!');
         console.log('User Data:', userData);
+
+        dispatch(signInSuccess(userData));
+
       }else{
-        console.error('SignUp failed');
+        toast.error('SignUp failed!');
       }
     }catch(error){
-      console.error('Error occurred while logging in:', error)
+      console.error('Error occurred while signup:', error)
     }
     }else{
         toast.error('Passwords do not match');

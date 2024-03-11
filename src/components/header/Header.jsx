@@ -5,12 +5,17 @@ import { faPhone,faMessage, faClock, faUser,  faAngleDown, faAngleRight } from '
 import Link from 'next/link';
 import styles from './Header.module.css';
 
+import { useSelector } from 'react-redux';
+
 
 
 
 const Header = () => {
     //Define state to hold the current time
     const [currentTime, setCurrentTime]=useState('');
+
+    const users = useSelector(state => state.user.currentUser);
+    // console.log(users);
 
     const getCurrentTime = ()=>{
         //get current time according to lacal time
@@ -59,7 +64,7 @@ const Header = () => {
             </section>
             <section className={styles.auth}>
                 <FontAwesomeIcon icon={faUser} className={styles.icon}/>
-                <Link href='/login'>Login/Register</Link>
+                <Link href='/login'>{users? users.firstName: 'Login/Register'}</Link>
             </section>
 
         </section>

@@ -45,13 +45,13 @@ export const loginUser = async(req,res)=>{
     try{
         const {emailAddress,password} = req.body;
 
-        const userExist = await User.findOne({emailAddress});
-        if(userExist && userExist.password===password){
+        const user = await User.findOne({emailAddress});
+        if(user && (await user.matchPassword(password))){
             res.status(201).json({
-                _id:userExist._id,
-                firstName:userExist.firstName,
-                lastName:userExist.lastName,
-                emailAddress:userExist.emailAddress,
+                _id:user._id,
+                firstName:user.firstName,
+                lastName:user.lastName,
+                emailAddress:user.emailAddress,
             });
         }else{
             res.status(401).json({error:'Invalid email or password!'});

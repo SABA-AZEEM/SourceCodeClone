@@ -2,13 +2,22 @@
 import Link from 'next/link';
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { redirect } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
-const MainContainer = styled.div`
+import { ToastContainer,toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useDispatch } from 'react-redux';
+import { signInSuccess } from '../GlobalRedux/features/User/userSlice';
+
+const Container = styled.div`
   background-image: url('/loginPageImage/img2.jpg');
   /* opacity: 0.3; */
   /* filter: grayscale(1); */
   background-size:cover;
+  
+`
+
+const MainContainer = styled.div`
   height: 90vh;
   display: flex;
   justify-content: center;
@@ -36,6 +45,10 @@ const Login = () => {
   const [emailAddress,setEmail] = useState('');
   const [password,setPassword] = useState('');
 
+  const router = useRouter();
+
+  const dispatch = useDispatch();
+
   const loginHandler = async(event)=>{
     event.preventDefault();
     
@@ -49,11 +62,13 @@ const Login = () => {
       });
       if(response.ok){
         const userData = await response.json();
-        console.log('Login Successfull!');
+        toast.success('Login Successfull!');
         console.log('User Data:', userData);
-        redirect('/student-dashboard');
+        dispatch(signInSuccess(userData));
+        router.push('/student-dashboard');
       }else{
         console.error('Login failed');
+        toast.error('Wrong Credentials!');
       }
     }catch(error){
       console.error('Error occurred while logging in:', error)
@@ -61,6 +76,7 @@ const Login = () => {
   }
 
   return (
+    <Container>
     <MainContainer>
         <SubContainer>
             <h3 style={{textAlign:'center',marginBottom:'1rem'}}>Sign in to your account</h3>
@@ -77,6 +93,8 @@ const Login = () => {
             </div>
         </SubContainer>
     </MainContainer>
+        <ToastContainer position='bottom-right' />
+    </Container>
   )
 }
 

@@ -23,8 +23,8 @@ export default function Home() {
   return (
   <div>
     {/* // top part of the main page  */}
-    <div class={styles.container}>
-      <div class={styles.content}>
+    <div className={styles.container}>
+      <div className={styles.content}>
         <h2>
           Source Code <span className={styles.styleGreen}>Academia </span>
           is a <span className={styles.styleGray}>global mission to build a </span>
