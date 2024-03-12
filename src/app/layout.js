@@ -1,11 +1,15 @@
 'use client'
 import { Inter } from "next/font/google";
 import "./globals.css";
+
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
+import DashboardHeader from "@/components/dashboardHeader/DashboardHeader";
 
-import { Provider } from "react-redux";
+
+import { Provider, useSelector } from "react-redux";
 import { store } from "./GlobalRedux/store";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,12 +19,16 @@ const inter = Inter({ subsets: ["latin"] });
 // };
 
 export default function RootLayout({ children }) {
+
+  // const user = useSelector(state => state.user.currentUser)
+  
   return (
       <html lang="en">
         <body className={inter.className}>
           <Provider store={store}> 
             <Header />
-              {children}
+            {/* {user && <DashboardHeader />} */}
+              {  children}
             <Footer />
           </Provider>
         </body>

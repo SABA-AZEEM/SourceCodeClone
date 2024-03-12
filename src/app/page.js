@@ -36,7 +36,7 @@ export default function Home() {
         </h3>
         <h1>GLOBAL CHANGE.</h1>
       </div>
-      <div class={styles.background}>
+      <div className={styles.background}>
         <Image
           src={myImage}
           width={800}
