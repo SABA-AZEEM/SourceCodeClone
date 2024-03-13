@@ -9,6 +9,7 @@ import { ToastContainer,toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { signInSuccess } from '../GlobalRedux/features/User/userSlice';
+import Cookies from 'js-cookie'
 
 const Container = styled.div`
   background-image: url('/loginPageImage/img2.jpg');
@@ -46,17 +47,18 @@ const Login = () => {
 
   const [emailAddress,setEmail] = useState('');
   const [password,setPassword] = useState('');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const router = useRouter();
   const dispatch = useDispatch();
   const { currentUser } = useSelector((state) => state.user);
   
-  useEffect(()=>{
-    if(currentUser){
+
+  useEffect(() => {
+    if (isLoggedIn) {
       router.push('/student-dashboard');
     }
-  },[]);
-
+  }, [isLoggedIn]); // Redirect on login
 
   //Method to handle login of user
   const loginHandler = async(event)=>{
@@ -71,12 +73,10 @@ const Login = () => {
         });
         if(response.ok){
           const userData = await response.json();
-          toast.success('Login Successfull!');
-          console.log('User Data:', userData);
-          router.push('/student-dashboard');
           dispatch(signInSuccess(userData));
-          document.cookie = `currentUser=${JSON.stringify(userData)}`;
-          console.log('Cookie set:', document.cookie);
+          Cookies.set('currentUser', JSON.stringify(userData));
+          toast.success('Login Successfull!');
+          setIsLoggedIn(true);
         }else{
           toast.error('Wrong Credentials!');
         }

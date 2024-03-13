@@ -1,3 +1,4 @@
+'use client'
 import Image from "next/image";
 import styles from "./page.module.css";
 import Link from "next/link";
@@ -16,9 +17,9 @@ import Skills from "@/components/skills/Skills";
 import CoachingCard from "@/components/coachingCard/CoachingCard";
 
 
-export default function Home() {
 
-  
+export default function Home() { 
+
 
   return (
   <div>
