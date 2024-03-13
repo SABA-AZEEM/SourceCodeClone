@@ -1,12 +1,13 @@
+/* eslint-disable react/no-unescaped-entities */
 'use client'
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useRouter } from 'next/navigation';
 
 import { ToastContainer,toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { signInSuccess } from '../GlobalRedux/features/User/userSlice';
 
 const Container = styled.div`
@@ -47,34 +48,43 @@ const Login = () => {
   const [password,setPassword] = useState('');
 
   const router = useRouter();
-
   const dispatch = useDispatch();
+  const { currentUser } = useSelector((state) => state.user);
+  
+  useEffect(()=>{
+    if(currentUser){
+      router.push('/student-dashboard');
+    }
+  },[]);
 
+
+  //Method to handle login of user
   const loginHandler = async(event)=>{
-    event.preventDefault();
-    
+    event.preventDefault();  
     try{
-      const response = await fetch('http://localhost:8000/api/users/login',{
-        method:'POST',
-        headers: {
-          'Content-Type':'application/json'
-        },
-        body: JSON.stringify({emailAddress,password})
-      });
-      if(response.ok){
-        const userData = await response.json();
-        toast.success('Login Successfull!');
-        console.log('User Data:', userData);
-        dispatch(signInSuccess(userData));
-        router.push('/student-dashboard');
-      }else{
-        console.error('Login failed');
-        toast.error('Wrong Credentials!');
-      }
+        const response = await fetch('http://localhost:8000/api/users/login',{
+          method:'POST',
+          headers: {
+            'Content-Type':'application/json'
+          },
+          body: JSON.stringify({emailAddress,password})
+        });
+        if(response.ok){
+          const userData = await response.json();
+          toast.success('Login Successfull!');
+          console.log('User Data:', userData);
+          router.push('/student-dashboard');
+          dispatch(signInSuccess(userData));
+          document.cookie = `currentUser=${JSON.stringify(userData)}`;
+          console.log('Cookie set:', document.cookie);
+        }else{
+          toast.error('Wrong Credentials!');
+        }
     }catch(error){
       console.error('Error occurred while logging in:', error)
     }
   }
+
 
   return (
     <Container>
@@ -89,7 +99,7 @@ const Login = () => {
                 <button type='submit' onClick={loginHandler} style={{margin:'1rem 0',padding:'0.5rem',cursor:'pointer',fontWeight:'800',backgroundColor:'black'}}>Login</button>
             </form>
             <div style={{margin:'1rem 0',textAlign:'center'}}>
-                <p>Don't have an account already?</p>
+                <p> Don't have an account already?</p>
                 <Link href='/register' style={{fontWeight:'800',textDecoration:'underline'}}>Sign Up Now</Link>
             </div>
         </SubContainer>

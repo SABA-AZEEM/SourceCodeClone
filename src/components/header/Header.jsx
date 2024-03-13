@@ -13,10 +13,10 @@ import { useSelector } from 'react-redux';
 const Header = () => {
     //Define state to hold the current time
     const [currentTime, setCurrentTime]=useState('');
+    const {currentUser} = useSelector(state=>state.user);
 
-    const users = useSelector(state => state.user.currentUser);
+
     // console.log(users);
-
     const getCurrentTime = ()=>{
         //get current time according to lacal time
         let currentTime = new Date();
@@ -64,7 +64,7 @@ const Header = () => {
             </section>
             <section className={styles.auth}>
                 <FontAwesomeIcon icon={faUser} className={styles.icon}/>
-                <Link href='/login'>{users? users.firstName: 'Login/Register'}</Link>
+                <Link href='/login'>{currentUser? currentUser.firstName: 'Login/Register'}</Link>
             </section>
 
         </section>
