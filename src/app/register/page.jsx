@@ -9,6 +9,7 @@ import { signInSuccess } from '../GlobalRedux/features/User/userSlice';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import { useRouter } from 'next/navigation';
 
 
 const MainContainer = styled.div`
@@ -49,6 +50,7 @@ const Register = () => {
   const [confirmPassword,setConfirmPassword] = useState('');
 
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const signUpHandler = async(event)=>{
     event.preventDefault();
@@ -66,9 +68,8 @@ const Register = () => {
         const userData = await response.json();
         toast.success('SignUp Successfull!');
         console.log('User Data:', userData);
-
         dispatch(signInSuccess(userData));
-
+        router.push('/student-dashboard');
       }else{
         toast.error('SignUp failed!');
       }

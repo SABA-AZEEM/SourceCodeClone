@@ -3,13 +3,15 @@
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+
 import { useRouter } from 'next/navigation';
+
 
 import { ToastContainer,toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { signInSuccess } from '../GlobalRedux/features/User/userSlice';
-import Cookies from 'js-cookie'
+
 
 const Container = styled.div`
   background-image: url('/loginPageImage/img2.jpg');
@@ -50,15 +52,17 @@ const Login = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const router = useRouter();
+
   const dispatch = useDispatch();
-  const { currentUser } = useSelector((state) => state.user);
-  
+  const {currentUser} = useSelector(state=>state.user);
+
 
   useEffect(() => {
-    if (isLoggedIn) {
+    if (isLoggedIn || currentUser ) {
       router.push('/student-dashboard');
     }
-  }, [isLoggedIn]); // Redirect on login
+  }, [isLoggedIn,currentUser]); // Redirect on login
+
 
   //Method to handle login of user
   const loginHandler = async(event)=>{
@@ -74,7 +78,6 @@ const Login = () => {
         if(response.ok){
           const userData = await response.json();
           dispatch(signInSuccess(userData));
-          Cookies.set('currentUser', JSON.stringify(userData));
           toast.success('Login Successfull!');
           setIsLoggedIn(true);
         }else{

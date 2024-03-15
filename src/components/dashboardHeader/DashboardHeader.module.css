@@ -2,3 +2,20 @@
     background-color: white;
     color: black;
 }
+.sec1Container{
+    background-color: black;
+    color: white;
+    padding: 1rem 0;
+}
+.secContainer{
+    width: 70%;
+    display: flex;
+    gap: 20px;
+    margin: 0 auto;
+    
+}
+.link{
+    padding:1rem .5rem ;
+    color: lightslategray;
+    font-weight: 700;
+}

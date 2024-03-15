@@ -11,6 +11,7 @@ import { useSelector } from 'react-redux';
 
 
 const Header = () => {
+    
     //Define state to hold the current time
     const [currentTime, setCurrentTime]=useState('');
     const {currentUser} = useSelector(state=>state.user);

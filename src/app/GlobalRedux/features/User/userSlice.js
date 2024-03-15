@@ -13,7 +13,7 @@ const userSlice = createSlice({
     reducers:{
         signInSuccess:(state,action)=>{
             state.currentUser = action.payload;
-            
+            Cookies.set('currentUser', JSON.stringify(action.payload));
         },
 
 

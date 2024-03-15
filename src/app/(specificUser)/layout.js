@@ -1,8 +1,9 @@
 'use client';
+import DashboardHeader from "@/components/dashboardHeader/DashboardHeader";
 
 export default function DashboardLayout({ children }) {
   return <section>
-    <h1>sub header</h1>
+    <DashboardHeader />
     {children}
     </section>
 }
