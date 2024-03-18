@@ -6,6 +6,7 @@ import Link from 'next/link';
 import styles from './Header.module.css';
 
 import { useSelector } from 'react-redux';
+import DropDownMenu from '../dropDownMenu/dropDownMenu';
 
 
 
@@ -15,9 +16,9 @@ const Header = () => {
     //Define state to hold the current time
     const [currentTime, setCurrentTime]=useState('');
     const {currentUser} = useSelector(state=>state.user);
+    const [dropState, setDropState] = useState(false);
 
 
-    // console.log(users);
     const getCurrentTime = ()=>{
         //get current time according to lacal time
         let currentTime = new Date();
@@ -29,6 +30,11 @@ const Header = () => {
         let time = currentHour+":"+currenMinute+":"+currentSecond+meridiem;
         return time;
     }
+
+    //show drop down meny
+    const showDropDownMenu = ()=>{
+        setDropState(!dropState);
+    }
     
     //Update the current time 
     useEffect(()=>{
@@ -36,6 +42,7 @@ const Header = () => {
             setCurrentTime(getCurrentTime());
         },1000);
         return () => clearInterval(intervalId);
+        setDropState(false);
     },[]);
 
     
@@ -65,8 +72,25 @@ const Header = () => {
             </section>
             <section className={styles.auth}>
                 <FontAwesomeIcon icon={faUser} className={styles.icon}/>
-                <Link href='/login'>{currentUser? currentUser.firstName: 'Login/Register'}</Link>
+                {
+                    currentUser ? 
+                    <div onClick={showDropDownMenu} style={{cursor:'pointer'}}>
+                        {currentUser.firstName}
+                        <FontAwesomeIcon 
+                            icon={faAngleDown} 
+                            style={{marginLeft:'5px'}}
+                        />
+                    </div>
+                    : 
+                    <Link href='/login'>Login/Register</Link>
+                }
+                
             </section>
+
+            <div style={{position:'absolute',right:0,top:'3rem'}}>
+                { dropState && currentUser && <DropDownMenu /> }
+            </div>
+            
 
         </section>
 

@@ -58,7 +58,7 @@ const Login = () => {
 
 
   useEffect(() => {
-    if (isLoggedIn || currentUser ) {
+    if (isLoggedIn && currentUser ) {
       router.push('/student-dashboard');
     }
   }, [isLoggedIn,currentUser]); // Redirect on login

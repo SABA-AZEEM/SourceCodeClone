@@ -5,6 +5,7 @@
     width: 70%;
     margin: 0 auto;   
     padding: 5px 9px;
+    position: relative;
 }
 
                 /* css for top part of the headr  */
@@ -23,6 +24,7 @@
 }
 .auth{
     border-left: 1px solid white;
+    display: flex;
 }
 
                 /* css for bottom part of the header  */

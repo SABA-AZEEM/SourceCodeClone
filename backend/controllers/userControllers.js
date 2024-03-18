@@ -62,9 +62,11 @@ export const loginUser = async(req,res)=>{
     }
 };
 
-// @desc user login
-// route POST /api/users/login
+// @desc user logout
+// route POST /api/users/logout
 // @access Public
-export const logoutUser ={
-    
+export const logoutUser = async (req,res)=>{
+    console.log('i am in logout funtion');
+    const current = req.cookies.currentUser;
+    console.log(current);
 }

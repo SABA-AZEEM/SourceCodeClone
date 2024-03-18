@@ -3,7 +3,6 @@ import { NextResponse } from "next/server";
 export function middleware(request) {
 
   const current = request.cookies.get('currentUser');
-  console.log("sadfg",current)
 
 
   if (!current) {
