@@ -16,8 +16,19 @@ connectDB();
 
 const app = express();
 
-//Enable all CORS requests
-app.use(cors());
+// Allow requests from specific origins
+const allowedOrigins = ['http://localhost:3000']; // Add your frontend URL here
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true // Allow credentials (cookies) to be included in requests
+}));
 app.use(cookieParser());
 
 

@@ -73,8 +73,10 @@ const Login = () => {
           headers: {
             'Content-Type':'application/json'
           },
-          body: JSON.stringify({emailAddress,password})
+          body: JSON.stringify({emailAddress,password}),
+          credentials: 'include',
         });
+        
         if(response.ok){
           const userData = await response.json();
           dispatch(signInSuccess(userData));

@@ -2,18 +2,22 @@
 import Link from 'next/link'
 import React from 'react'
 import styles from './DropDownMenu.module.css';
-
-import { useDispatch, useSelector } from 'react-redux';
-import { signOut } from '@/app/GlobalRedux/features/User/userSlice';
+import { usePathname } from 'next/navigation';
 
 
 const DropDownMenu = () => {
 
-    const dispatch = useDispatch();
+  const pathName = usePathname();
 
     const handleLogout = async()=>{
-        // dispatch(signOut(null));
-        await fetch('http://localhost:8000/api/users/logout');
+        await fetch('http://localhost:8000/api/users/logout',{
+          method:'POST',
+          headers: {
+            'Content-Type':'application/json'
+          },
+          body: JSON.stringify({}),
+          credentials: 'include',
+        });
     }
 
   return (

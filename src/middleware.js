@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 export function middleware(request) {
 
   const current = request.cookies.get('currentUser');
+  console.log("middleware cookie:",current);
 
 
   if (!current) {

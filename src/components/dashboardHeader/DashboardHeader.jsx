@@ -11,17 +11,9 @@ import { usePathname } from 'next/navigation';
 
 const DashboardHeader = () => {
 
-  const [activeLink, setActiveLink] = useState(null);
   const {currentUser} = useSelector(state=>state.user);
   const pathname = usePathname();
   
-  useEffect(()=>{
-    setActiveLink(pathname);
-  },[pathname]);
-  
-  const handleClick = (link) =>{
-    setActiveLink(link);
-  };
 
   return (
     <div className={styles.mainContainer}>

@@ -7,6 +7,7 @@ import styles from './Header.module.css';
 
 import { useSelector } from 'react-redux';
 import DropDownMenu from '../dropDownMenu/dropDownMenu';
+import { usePathname } from 'next/navigation';
 
 
 
@@ -17,6 +18,13 @@ const Header = () => {
     const [currentTime, setCurrentTime]=useState('');
     const {currentUser} = useSelector(state=>state.user);
     const [dropState, setDropState] = useState(false);
+    const pathname = usePathname();
+
+    useEffect(()=>{
+        if(pathname==='/login'){
+            setDropState(false);
+        }
+    },[pathname])
 
 
     const getCurrentTime = ()=>{
