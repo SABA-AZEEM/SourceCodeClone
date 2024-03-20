@@ -1,11 +1,9 @@
 'use client'
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+// import { ToastContainer,toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 
-import { stemCourses } from '../../../public/data/stemCoursesData';
-import { arabicCourses } from '../../../public/data/arabicCourseData';
-import { CoursesData } from '../../../public/data/coursesData';
-import { CoachingData } from '../../../public/data/coaching&counselingData';
 
 import CourseCard from '@/components/courseCard/CourseCard';
 
@@ -30,6 +28,26 @@ const CardContainer = styled.div`
 `
 
 const Courses = () => {
+
+    const [coursesData,setCoursesData] = useState([]);
+
+    useEffect( () => {
+        const fetchData = async ()=>{
+            try {
+                const response = await fetch('http://localhost:8000/api/courses');
+                if (!response.ok) {
+                  throw new Error(`Failed to fetch courses: ${response.statusText}`);
+                }
+                const coursesData = await response.json();
+                setCoursesData(coursesData);
+              } catch (error) {
+                console.error('Error fetching courses:', error);
+              }
+        }
+        fetchData();
+      }, []);
+      
+
   return (
     <MainContainer>
         <SubContainer>
@@ -37,10 +55,13 @@ const Courses = () => {
                 <h3 style={{fontSize:'1.3rem',marginBottom:'2rem'}}><span style={{color:'yellowgreen'}}>Skill Development</span> Courses</h3>
                 
                 <CardContainer>
+
                 {
-                    stemCourses.map((course)=>(
+                   coursesData.map((course)=>(
+
+                    course.category!=='coaching-courses' &&
                         <CourseCard
-                            key={course.id}
+                            key={course._id}
                             imgURL={course.imgURL}
                             duration={course.duration}
                             title={course.title}
@@ -49,37 +70,7 @@ const Courses = () => {
                             rupee={course.rupee}
                             detailUrl={course.detailUrl}
                         />
-                    ))
-
-                }
-
-                {
-                    arabicCourses.map((course)=>(
-                        <CourseCard
-                            key={course.id}
-                            imgURL={course.imgURL}
-                            duration={course.duration}
-                            title={course.title}
-                            linkTitle={course.linkTitle}
-                            linkTitleUrl={course.linkTitleUrl}
-                            rupee={course.rupee}
-                            detailUrl={course.detailUrl}
-                        />
-                    ))
-                }
-
-                {
-                   CoursesData.map((course)=>(
-                        <CourseCard
-                            key={course.id}
-                            imgURL={course.imgURL}
-                            duration={course.duration}
-                            title={course.title}
-                            linkTitle={course.linkTitle}
-                            linkTitleUrl={course.linkTitleUrl}
-                            rupee={course.rupee}
-                            detailUrl={course.detailUrl}
-                        />
+                    
                     )) 
                 }
                 </CardContainer>
@@ -91,9 +82,10 @@ const Courses = () => {
 
             <CardContainer>
                 {
-                   CoachingData.map((course)=>(
+                   coursesData.map((course)=>(
+                    course.category==='coaching-courses' &&
                         <CourseCard
-                            key={course.id}
+                            key={course._id}
                             imgURL={course.imgURL}
                             duration={course.duration}
                             title={course.title}
@@ -107,6 +99,7 @@ const Courses = () => {
             </CardContainer>
             </div>
         </SubContainer>
+        {/* <ToastContainer position='bottom-right' /> */}
     </MainContainer>
   )
 }

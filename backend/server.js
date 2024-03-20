@@ -6,6 +6,7 @@ dotenv.config();
 import connectDB from "./config/connectDB.js";
 
 import userRoutes from './routes/userRoutes.js';
+import coursesRoutes from './routes/coursesRoutes.js';
 
 const port = process.env.PORT || 5000;
 
@@ -17,7 +18,8 @@ connectDB();
 const app = express();
 
 // Allow requests from specific origins
-const allowedOrigins = ['http://localhost:3000']; // Add your frontend URL here
+const allowedOrigins = ['http://localhost:3000']; 
+// const allowedOrigins = ['https://d099-2400-adc5-135-8500-b5c5-f5d2-2f84-30fe.ngrok-free.app']; 
 
 app.use(cors({
   origin: function (origin, callback) {
@@ -37,6 +39,7 @@ app.use(express.json());
 
 //Routes
 app.use('/api/users',userRoutes);
+app.use('/api/courses',coursesRoutes);
 
 
 

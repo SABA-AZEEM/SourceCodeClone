@@ -1,17 +1,26 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
 import { faBookmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import styles from './CourseCard.module.css'
 
 const CourseCard = (props) => {
+
+  const [isBookmarked,setIsBookmarked] = useState(false);
+
+  const toggleBookMarked = ()=>{
+    setIsBookmarked(!isBookmarked);
+  }
+
   return (
     <div className={styles.card}>
       <Image 
         src={props.imgURL}
         alt='course image'
+        width={200}
+        height={200}
         className={styles.img}
       />
       <div className={styles.subPart}>
@@ -27,7 +36,8 @@ const CourseCard = (props) => {
             <Link href={props.detailUrl} className={styles.btn}>View Detail</Link>
             <FontAwesomeIcon
                 icon={faBookmark}
-                style={{fontSize:'1.5rem'}}
+                className={`${styles.bookmark} ${isBookmarked ? styles.bookmarked : ''}`}
+                onClick={toggleBookMarked}
             />
         </div>
       </div>

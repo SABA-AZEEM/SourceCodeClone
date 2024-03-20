@@ -89,7 +89,7 @@ const Header = () => {
                             style={{marginLeft:'5px'}}
                         />
                     </div>
-                    : 
+                                : 
                     <Link href='/login'>Login/Register</Link>
                 }
                 

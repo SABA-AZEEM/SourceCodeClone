@@ -23,3 +23,11 @@
     color: yellowgreen;
     border: none;
   }
+  .bookmark{
+    font-size:1.5rem;
+    color:gray;
+    cursor:pointer;
+  }
+  .bookmarked{
+    color: black;
+  }

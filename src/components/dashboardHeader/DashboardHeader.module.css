@@ -27,3 +27,9 @@
     border-bottom: 2px solid yellowgreen;
     color: black;
 }
+
+@media (max-width:800px) {
+    .sec2Container{
+        display: none;
+    }
+}

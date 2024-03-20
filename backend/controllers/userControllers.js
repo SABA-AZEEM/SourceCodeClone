@@ -21,6 +21,19 @@ export const registerUser = async(req,res)=>{
     });
 
     if(user){
+
+        // Set cookie here
+        res.cookie('currentUser', JSON.stringify({
+            _id: user._id,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            emailAddress: user.emailAddress,
+        }), {
+            // secure: true,
+            // httpOnly:true,
+            // sameSite: 'strict',
+        });
+
         res.status(201).json({
             _id:user._id,
             firstName:user.firstName,
@@ -57,7 +70,7 @@ export const loginUser = async(req,res)=>{
             }), {
                 // secure: true,
                 // httpOnly:true,
-                // sameSite: 'strict',
+                sameSite: 'strict',
             });
 
             res.status(201).json({

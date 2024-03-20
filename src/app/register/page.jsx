@@ -62,7 +62,8 @@ const Register = () => {
         headers: {
           'Content-Type':'application/json'
         },
-        body: JSON.stringify({firstName,lastName,emailAddress,password,confirmPassword})
+        body: JSON.stringify({firstName,lastName,emailAddress,password,confirmPassword}),
+        credentials: 'include',
       });
       if(response.ok){
         const userData = await response.json();
