@@ -1,0 +1,23 @@
+.cardBox{
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    width: 45%;
+    padding: 20px;
+}
+.cardBox:hover{
+    box-shadow: 0 0 12px rgba(0,0,0,0.4);
+    border: none;
+}
+.title{
+    font-size: 1.7rem;
+    font-weight: 900;
+    color: yellowgreen;
+    margin: 15px 0;
+}
+.description{
+    margin-bottom: 3rem;
+}
+.link{
+    font-weight: 900;
+    text-decoration: underline;
+}
