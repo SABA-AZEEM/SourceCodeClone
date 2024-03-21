@@ -1,4 +1,5 @@
 import User from "../models/userModel.js";
+// import Course from "../models/coursesModel.js";
 
 // @desc Register a new user
 // route POST /api/users
@@ -94,9 +95,7 @@ export const loginUser = async(req,res)=>{
 
 export const logoutUser = async (req,res)=>{
     try {
-        console.log('i am in logout funtion');
         const current = req.cookies.currentUser;
-        console.log(current);
         // Clear the 'currentUser' cookie
         res.clearCookie('currentUser', { path: '/' });
 
@@ -106,3 +105,21 @@ export const logoutUser = async (req,res)=>{
         res.status(500).json({ error: 'An unexpected error occurred' });
     }
 }
+
+// @desc user courses
+// route POST /api/users/courses
+// @access Private
+
+// export const userCourses = async (req,res)=>{
+//     try{
+//         const {userId,courseId} = req.body;
+//         //Find user if exist
+//         const user = await User.findById(userId);
+//         if(user){
+
+//         }
+//     }catch(error){
+//         console.error('Error occurred during enrollment:',error);
+//         res.status(500).json({error:'An unexpected error occurred.'});
+//     }
+// }

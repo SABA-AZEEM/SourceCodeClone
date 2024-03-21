@@ -69,9 +69,12 @@ const page = () => {
                 enrollmentData.map((enrollment)=>(
                   <EnrollmentCard
                     key={enrollment.id}
+                    id={enrollment.id}
                     limit={enrollment.limit}
                     ruppee={enrollment.ruppee}
                     timeLimit={enrollment.timeLimit}
+                    title={mainHeading}
+                    
                   />
                 ))
               }

@@ -6,6 +6,8 @@ import styled from 'styled-components';
 
 
 import CourseCard from '@/components/courseCard/CourseCard';
+import { useDispatch } from 'react-redux';
+import { storeCourses } from '../GlobalRedux/features/Courses/courseSlice';
 
 const MainContainer = styled.div`
     background-color:white;
@@ -30,6 +32,7 @@ const CardContainer = styled.div`
 const Courses = () => {
 
     const [coursesData,setCoursesData] = useState([]);
+    const dispatch = useDispatch();
 
     useEffect( () => {
         const fetchData = async ()=>{
@@ -40,6 +43,8 @@ const Courses = () => {
                 }
                 const coursesData = await response.json();
                 setCoursesData(coursesData);
+                dispatch(storeCourses(coursesData));
+
               } catch (error) {
                 console.error('Error fetching courses:', error);
               }
@@ -86,6 +91,7 @@ const Courses = () => {
                     course.category==='coaching-courses' &&
                         <CourseCard
                             key={course._id}
+                            id={course._id}
                             imgURL={course.imgURL}
                             duration={course.duration}
                             title={course.title}
