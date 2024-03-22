@@ -9,7 +9,8 @@ import DashboardHeader from "@/components/dashboardHeader/DashboardHeader";
 
 
 import { Provider, useSelector } from "react-redux";
-import { store } from "./GlobalRedux/store";
+import { store, persistor } from "./GlobalRedux/store";
+import { PersistGate } from "redux-persist/integration/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,10 +26,11 @@ export default function RootLayout({ children }) {
       <html lang="en">
         <body className={inter.className}>
           <Provider store={store}> 
+          <PersistGate loading={null} persistor={persistor}>
             <Header />
-            {/* {user && <DashboardHeader />} */}
               {  children}
             <Footer />
+            </PersistGate>
           </Provider>
         </body>
       </html>

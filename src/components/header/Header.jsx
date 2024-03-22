@@ -24,7 +24,7 @@ const Header = () => {
         if(pathname==='/login'){
             setDropState(false);
         }
-    },[pathname])
+    },[pathname]);
 
 
     const getCurrentTime = ()=>{

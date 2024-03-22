@@ -13,7 +13,6 @@ const courseSlice = createSlice({
         storeCourses:(state,action)=>{
             state.courses = action.payload;
         },
-
     },
 });
 

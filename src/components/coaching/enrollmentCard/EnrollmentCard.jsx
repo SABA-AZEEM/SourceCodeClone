@@ -3,12 +3,24 @@ import Link from 'next/link'
 import React, { useEffect } from 'react'
 import styles from './enrollmentCard.module.css'
 import { useSelector } from 'react-redux'
+import { useRouter } from 'next/navigation'
 
 const EnrollmentCard = (props) => {
 
-  const {courses} = useSelector(state => state.course);
+  const {currentUser} = useSelector(state => state.user);
+  const router = useRouter();
+
+  const handleEnroll = ()=>{
+    if(currentUser){
+      router.push(`/checkout/${props.title}`);
+    }else{
+      router.push('/login');
+    }
+  }
+
   useEffect(()=>{
     console.log(props);
+    console.log('current user:',currentUser);
 
   },[])
 
@@ -19,7 +31,8 @@ const EnrollmentCard = (props) => {
       <h2>Rs. {props.ruppee}</h2>
       {props.discount ? <span style={{color:'gray',textDecoration:'linehThrough'}}>Rs. {props.discount}</span> : <br></br>}
       <span>{props.timeLimit}</span>
-      <Link href='/checkout/5-14-0-1-personal-counseling-coaching' className={styles.button}>Enroll Now</Link>
+      <button onClick={handleEnroll} className={styles.button}>Enroll Now</button>
+      
     </div>
   )
 }

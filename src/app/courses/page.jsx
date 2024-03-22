@@ -37,14 +37,16 @@ const Courses = () => {
     useEffect( () => {
         const fetchData = async ()=>{
             try {
-                const response = await fetch('http://localhost:8000/api/courses');
+                const response = (await fetch('http://localhost:8000/api/courses'));
+              
                 if (!response.ok) {
                   throw new Error(`Failed to fetch courses: ${response.statusText}`);
                 }
-                const coursesData = await response.json();
+                const coursesData = await response.json()
+                console.log("data", coursesData);
                 setCoursesData(coursesData);
                 dispatch(storeCourses(coursesData));
-
+                console.log("after displatch")
               } catch (error) {
                 console.error('Error fetching courses:', error);
               }
