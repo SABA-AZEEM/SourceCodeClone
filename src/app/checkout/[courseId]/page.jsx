@@ -1,8 +1,11 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Image from 'next/image';
 import styles from './checkout.module.css';
+import Cookies from 'js-cookie';
+import Link from 'next/link';
+import Stripe from '@/components/stripeComponent/Stripe';
 
 const page = ({params}) => {
 
@@ -10,9 +13,12 @@ const page = ({params}) => {
   const {courses} = useSelector(state => state.course);
   const course = courses.filter((course)=> course.title === title);
   console.log(course);
+  
 
-  const {currentUser} = useSelector(state => state.user)
-  console.log(currentUser);
+  const currentUser = Cookies.get('currentUser');
+  const user = JSON.parse(currentUser);
+
+  
 
   return (
     <div className={styles.mainContainer}>
@@ -44,13 +50,24 @@ const page = ({params}) => {
             <div>
               <h3>Your Information</h3>
               <div>
-                <span>Full Name:</span>
-                {/* <p>{currentUser.firstName}</p> */}
+                <span>First Name:</span>
+                <p>{user.firstName}</p>
+              </div>
+              <div>
+                <span>Last Name:</span>
+                <p>{user.lastName}</p>
+              </div>
+              <div>
+                <span>Email:</span>
+                <p>{user.emailAddress}</p>
               </div>
             </div>
-            <div></div>
-          </div>
+          </div>  
 
+        </section>
+
+        <section>
+            <Stripe amount={course[0].rupee}/>
         </section>
 
       </div>

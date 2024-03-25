@@ -1,9 +1,9 @@
 import express from 'express';
-import { getCourses } from '../controllers/coursesControllers.js';
+import { createPayment, getCourses } from '../controllers/coursesControllers.js';
 
 const router = express.Router();
 
-router.route('/')
-                .get(getCourses);
+router.route('/').get(getCourses);
+router.route('/payment').post(createPayment);
 
 export default router;
