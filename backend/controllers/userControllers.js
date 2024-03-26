@@ -68,6 +68,7 @@ export const loginUser = async(req,res)=>{
                 firstName: user.firstName,
                 lastName: user.lastName,
                 emailAddress: user.emailAddress,
+                enrolledCourses: user.enrolledCourses,
             }), {
                 // secure: true,
                 // httpOnly:true,

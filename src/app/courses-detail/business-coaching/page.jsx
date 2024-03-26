@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import styles from '../coursesDetail.module.css';
 
@@ -11,6 +13,7 @@ import Requirements from '@/components/coaching/requirements/Requirements';
 import { requirements } from '../../../../public/data/requirementsData';
 import { enrollmentData } from '../../../../public/data/businessEnrollmentData';
 import EnrollmentCard from '@/components/coaching/enrollmentCard/EnrollmentCard';
+
 
 const page = () => {
 
@@ -66,17 +69,6 @@ const page = () => {
             <div className={styles.border}></div>
             <div className={styles.enrollments}>
               {
-                // enrollmentData.map((enrollment)=>(
-                //   <EnrollmentCard
-                //     key={enrollment.id}
-                //     id={enrollment.id}
-                //     limit={enrollment.limit}
-                //     ruppee={enrollment.ruppee}
-                //     timeLimit={enrollment.timeLimit}
-                //     title={mainHeading}
-                    
-                //   />
-                // ))
                 <EnrollmentCard 
                   limit='1 Hour Session'
                   ruppee='116,000.00'

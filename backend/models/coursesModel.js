@@ -22,7 +22,7 @@ const courseSchema = new mongoose.Schema({
         required:true,
     },
     rupee:{
-        type:String,
+        type:Number,
         required:true,
     },
     detailUrl:{

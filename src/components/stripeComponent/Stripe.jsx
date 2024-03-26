@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 
 const asyncStripe = loadStripe('pk_test_51OcptQGn8bEUxtCQEgn0Owk9C14A8x5esroSmGPAnkCRYcxOYxQZbFBN6Er7a7ozzTlNWm8y4pjJYElSTVXznIPT00BQ9vO68M');
 
-const Stripe = ({ amount = 1 }) => {
+const Stripe = ({ course_id,user_id }) => {
   const router = useRouter();
 
   const handler = async () => {
@@ -13,7 +13,8 @@ const Stripe = ({ amount = 1 }) => {
       const res = await fetch("http://localhost:8000/api/courses/payment", {
         method: "POST",
         body: JSON.stringify({
-          amount,
+          course_id,
+          user_id,
         }),
         headers: { "Content-Type": "application/json" },
       });

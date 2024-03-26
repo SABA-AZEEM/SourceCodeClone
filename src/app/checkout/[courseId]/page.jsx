@@ -12,11 +12,12 @@ const page = ({params}) => {
   const title = decodeURIComponent(params.courseId);
   const {courses} = useSelector(state => state.course);
   const course = courses.filter((course)=> course.title === title);
-  console.log(course);
+  console.log('course',course[0]._id);
   
 
   const currentUser = Cookies.get('currentUser');
   const user = JSON.parse(currentUser);
+  console.log('user',user._id);
 
   
 
@@ -67,7 +68,10 @@ const page = ({params}) => {
         </section>
 
         <section>
-            <Stripe amount={course[0].rupee}/>
+            <Stripe 
+              course_id={course[0]._id}
+              user_id={user._id}
+            />
         </section>
 
       </div>

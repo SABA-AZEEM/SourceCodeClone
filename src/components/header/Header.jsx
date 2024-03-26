@@ -8,6 +8,7 @@ import styles from './Header.module.css';
 import { useSelector } from 'react-redux';
 import DropDownMenu from '../dropDownMenu/dropDownMenu';
 import { usePathname } from 'next/navigation';
+import Cookies from 'js-cookie';
 
 
 
@@ -16,7 +17,8 @@ const Header = () => {
     
     //Define state to hold the current time
     const [currentTime, setCurrentTime]=useState('');
-    const {currentUser} = useSelector(state=>state.user);
+    // const {currentUser} = useSelector(state=>state.user);
+    const currentUser = Cookies.get('currentUser') ? JSON.parse(Cookies.get('currentUser')) : null;
     const [dropState, setDropState] = useState(false);
     const pathname = usePathname();
 

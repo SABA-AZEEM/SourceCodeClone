@@ -7,7 +7,7 @@ export const CoursesData = [
         title:'Mathematics',
         linkTitle:'Mathematics',
         linkTitleUrl:'/sub-category/mathematics',
-        rupee:'8,900.00',
+        rupee:8900.00,
         detailUrl:'/courses-detail/mathematics',
         category:'skill-courses'
     },
@@ -17,7 +17,7 @@ export const CoursesData = [
         title:'Biology',
         linkTitle:'Biology',
         linkTitleUrl:'/sub-category/biology',
-        rupee:'8,900.00',
+        rupee:8900.00,
         detailUrl:'/courses-detail/biology',
         category:'skill-courses'
     },
@@ -27,7 +27,7 @@ export const CoursesData = [
         title:'Chemistry',
         linkTitle:'Chemistry',
         linkTitleUrl:'/sub-category/chemistry',
-        rupee:'8,900.00',
+        rupee:8900.00,
         detailUrl:'/courses-detail/chemistry',
         category:'skill-courses'
     },
@@ -37,7 +37,7 @@ export const CoursesData = [
         title:'Physics',
         linkTitle:'Physics',
         linkTitleUrl:'/sub-category/physics',
-        rupee:'8,900.00',
+        rupee:8900.00,
         detailUrl:'/courses-detail/physics',
         category:'skill-courses'
     },
@@ -48,7 +48,7 @@ export const CoursesData = [
         title:'Arabic for Adults',
         linkTitle:'Arabic Language',
         linkTitleUrl:'/sub-category/arabic-language',
-        rupee:'6,900.00',
+        rupee:6900.00,
         detailUrl:'/courses-detail/arabic-for-adults',
         category:'skill-courses'
     },
@@ -59,7 +59,7 @@ export const CoursesData = [
         title:'Arabic for Kids (age 5 to 12)',
         linkTitle:'Arabic Language',
         linkTitleUrl:'/sub-category/arabic-language',
-        rupee:'6,900.00',
+        rupee:6900.00,
         detailUrl:'/courses-detail/arabic-for-kids-age-5-to-12',
         category:'skill-courses'
     },
@@ -70,7 +70,7 @@ export const CoursesData = [
         title:'Arabic Advance',
         linkTitle:'Arabic Language',
         linkTitleUrl:'/sub-category/arabic-language',
-        rupee:'6,900.00',
+        rupee:6900.00,
         detailUrl:'/courses-detail/arabic-advance',
         category:'skill-courses'
     },
@@ -81,7 +81,7 @@ export const CoursesData = [
         title:'Arabic Tajweed',
         linkTitle:'Arabic Language',
         linkTitleUrl:'/sub-category/arabic-language',
-        rupee:'6,900.00',
+        rupee:6900.00,
         detailUrl:'/courses-detail/arabic-tajweed',
         category:'skill-courses'
     },
@@ -92,7 +92,7 @@ export const CoursesData = [
         title:'Arabic Grammar',
         linkTitle:'Arabic Language',
         linkTitleUrl:'/sub-category/arabic-language',
-        rupee:'NA',
+        rupee:8900.00,
         detailUrl:'/courses-detail/arabic-grammar',
         category:'skill-courses'
     },
@@ -102,7 +102,7 @@ export const CoursesData = [
         title:'Critical thinking - Learning how to think',
         linkTitle:'Critical Thinking',
         linkTitleUrl:'/sub-category/critical-thinking',
-        rupee:'8,900.00',
+        rupee:8900.00,
         detailUrl:'/courses-detail/critical-thinking-learning-how-to-think',
         category:'skill-courses'
     },
@@ -112,7 +112,7 @@ export const CoursesData = [
         title:'Emotional Intelligence',
         linkTitle:'Emotional Intelligence',
         linkTitleUrl:'/sub-category/emotional-intelligence',
-        rupee:'8,900.00',
+        rupee:8900.00,
         detailUrl:'/courses-detail/emotional-intelligence',
         category:'skill-courses'
     },
@@ -123,7 +123,7 @@ export const CoursesData = [
         title:'Personal Counseling & Coaching',
         linkTitle:'Coaching',
         linkTitleUrl:'/sub-category/coaching',
-        rupee:'26,000.00',
+        rupee:26000.00,
         detailUrl:'/courses-detail/personal-counseling-coaching',
         category:'coaching-courses'
     },
@@ -133,7 +133,7 @@ export const CoursesData = [
         title:'Business Coaching',
         linkTitle:'Coaching',
         linkTitleUrl:'/sub-category/coaching',
-        rupee:'116,000.00',
+        rupee:116000.00,
         detailUrl:'/courses-detail/business-coaching',
         category:'coaching-courses'
     },
@@ -143,7 +143,7 @@ export const CoursesData = [
         title:'Teen Mentorship Program (16-18 Yrs)',
         linkTitle:'Coaching',
         linkTitleUrl:'/sub-category/coaching',
-        rupee:'15,000.00',
+        rupee:15000.00,
         detailUrl:'/courses-detail/teen-mentorship-program-16-18-yrs',
         category:'coaching-courses'
     },
