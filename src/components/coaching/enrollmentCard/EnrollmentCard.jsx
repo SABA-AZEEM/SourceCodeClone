@@ -23,11 +23,13 @@ const EnrollmentCard = (props) => {
     });
     const currentCourseId = currentCourse[0]._id;
     
-    currentUser.enrolledCourses.forEach((courseId)=>{
-      if(courseId === currentCourseId){
-        setDisabledButton(true);
-      }
-    })
+    if(currentUser.enrolledCourses){
+      currentUser.enrolledCourses.forEach((courseId)=>{
+        if(courseId === currentCourseId){
+          setDisabledButton(true);
+        }
+      })
+    }
   },[]);
 
   const handleEnroll = ()=>{
