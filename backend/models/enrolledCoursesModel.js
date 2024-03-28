@@ -13,7 +13,7 @@ const enrolledCourseSchema = new mongoose.Schema({
         type:String,
         default:'pending',
     },
-    payment_intenetId:{
+    paymentIntentId:{
         type:String,
         required:true,
     }
@@ -21,4 +21,8 @@ const enrolledCourseSchema = new mongoose.Schema({
     timestamps:true,
 });
 
-enrolledCourseSchema.index()
+enrolledCourseSchema.index({courseId:1, userId:1},{unique:true});
+
+const EnrolledCourse = mongoose.model('EnrolledCourse',enrolledCourseSchema);
+
+export default EnrolledCourse;
